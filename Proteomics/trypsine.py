@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import sys, os, re, random
+import sys, os, re
 
 pyScriptName = sys.argv[0]
 fastaFileName = sys.argv[1]
@@ -19,13 +19,13 @@ with open(fastaFileName, "r") as fasta_file, open(outputFileName, "w") as output
         else:
             fasta_dict[sequence_id] += line.strip()
 
-# Cleave a protein in different peptide with trypsin
+    # Cleave a protein in different peptide with trypsin
     for id in fasta_dict.keys():
         print(id)
         seq = fasta_dict[id]
         site = []
         peptide = []
-        for aa in range(0,len(seq)-1):
+        for aa in range(0,len(seq)-1): # This line is necessary to avoid 
             if seq[aa] in 'KR' and seq[aa+1] != 'P':
                 site.append(aa+1)
             #if seq[aa] == 'K' and seq[aa+1] != 'P':
@@ -34,22 +34,17 @@ with open(fastaFileName, "r") as fasta_file, open(outputFileName, "w") as output
         if site[-1] != len(seq):
             site.append(len(seq))
 
-        # Missed cleavage
-        print(site)
-        print(maxMissedCleavage)
+        # Missed cleavage and print the different peptides
+        print("Missed cleavage: {}".format(maxMissedCleavage))
 
-        if maxMissedCleavage == 0:
-            print("0 missed cleavage")
-        else maxMissedCleavage == 1:
-            print("1 missed cleavage")
-            inter_site = 
-            site.remove(
+        if int(maxMissedCleavage) == 0:
+            for pep in range(0, len(site)-1):
+                peptide.append(seq[site[pep]:site[pep+1]])
+        elif int(maxMissedCleavage) == 1:
+            for pep in range(0,len(site)-2):
+                peptide.append(seq[site[pep]:site[pep+2]])
         
-        
-        # Print the different peptides
-        for pep in range(0, len(site)-1):
-            peptide.append(seq[site[pep]:site[pep+1]])
-
+        # Write the id and the peptides a in txt file
         output_peptides.write(id + "\n")
         for frag in peptide:
             output_peptides.write(frag + "\n")
