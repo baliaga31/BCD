@@ -197,10 +197,22 @@ public class Etudiant {
 	/* Methode ligneResultat à écrire ci-dessous 
 	 * Cette méthode utilise le résultat de moyenne et de mention
 	 * et retourne une chaine de caractère précisant :
-	 * le nom, la moyenne, la mention, et si l'étudiant est ajourné, la liste des modules obtenus
-	 */
-	
-	
+	 * le nom, la moyenne, la mention, et si l'étudiant est ajourné, la liste des modules obtenus */
+		public String ligneResultat() {
+			String result = "Nom: " + this.nom + " Moyenne: " + this.moyenne() + " Mention: " + this.mention() + " Module valide: ";
+			if (this.moyenne() < 10) {
+				if (this.note_prog >= 10) {
+					result = result + "Programmation ";
+				}
+				if (this.note_sys >= 10) {
+					result = result + " Systeme ";
+				}
+				if (this.note_stage >= 10) {
+					result = result + " Stage ";
+				}
+			}
+			return result;
+		}
 
 }
 

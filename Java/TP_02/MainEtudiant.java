@@ -128,14 +128,21 @@ public class MainEtudiant {
 			
 		/* Utilisation de la méthode mention pour chaque étudiant. Code à écrire ci-dessous */	
 			System.out.println("L'etudiant " + etud1.getNom() + " est " + etud1.mention());
-			//System.out.println("L'etudiant " + etud2.getNom() + "est " + etud2.mention());
-			
+			System.out.println("L'etudiant " + etud2.getNom() + " est " + etud2.mention());
+			System.out.println("L'etudiant " + etud3.getNom() + " est " + etud3.mention());
+			System.out.println("L'etudiant " + etud4.getNom() + " est " + etud4.mention());
+			System.out.println("L'etudiant " + etud5.getNom() + " est " + etud5.mention());
+			System.out.println("L'etudiant " + etud6.getNom() + " est " + etud6.mention());
+			System.out.println("L'etudiant " + etud7.getNom() + " est " + etud7.mention());
 		
 		/* Utilisation de la méthode ligneResultat pour chaque étudiant. Code à écrire ci-dessous */
-			
-			
-		
-
+			System.out.println(etud1.ligneResultat());
+			System.out.println(etud2.ligneResultat());
+			System.out.println(etud3.ligneResultat());
+			System.out.println(etud4.ligneResultat());
+			System.out.println(etud5.ligneResultat());
+			System.out.println(etud6.ligneResultat());
+			System.out.println(etud7.ligneResultat());
 	}
 
 }
