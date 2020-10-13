@@ -27,10 +27,12 @@ for i in sys.argv[1:]:
 
 # factorielle
 
-#n = int(input("rentrez votre n \n"))
+print("\n")
+
+print("Factorielle \n")
 
 def fact(x):
-    if x == 1:
+    if x == 0:
         return 1
     else:
         return x * fact(x-1)
@@ -55,4 +57,18 @@ def premier(x):
         return "C'est un nombre premier"
 
 print(premier(int(nbrPrem)))
-        
+
+# Autre solution pour les nombres premiers
+
+def premiers2(x):
+    premiers = []
+    for n in range(2,x+1):
+        diviseurs = []
+        for i in range(1,n+1):
+            if n % i == 0:
+                diviseurs.append(i)
+        if diviseurs == [1, i]:
+            premiers.append(i)
+    return premiers
+
+print(premiers2(int(nbrPrem)))
