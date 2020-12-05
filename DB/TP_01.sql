@@ -159,7 +159,20 @@ WHERE nomf = 'Samaco' ;
 
 -- le fournisseur Samaco s'est fait racheter par la firme Technal adresse : 69005 Lyon
 
-ALTER TABLE fournisseur NOCHECK CONSTRAINT ALL ;
+ALTER TABLE COMMANDE DISABLE CONSTRAINT pk_b ;
+ALTER TABLE PRODUIT DISABLE CONSTRAINT pk_a ;
+
 UPDATE fournisseur 
 SET nomf = 'Technal', adrsf = '69005 Lyon' 
-WHERE nomf = 'Samaco';
+WHERE nomf = 'Samaco' ;
+
+UPDATE commande
+SET nomf = 'Technal'
+WHERE nomf = 'Samaco' ;
+
+UPDATE produit
+SET nomf = 'Technal'
+WHERE nomf = 'Samaco' ;
+
+ALTER TABLE COMMANDE ENABLE CONSTRAINT pk_b ;
+ALTER TABLE PRODUIT ENABLE CONSTRAINT pk_a ;
