@@ -4,25 +4,33 @@
 
 using namespace std;
 
-ifstream myFlux("calmodulin.fasta");
+void processFastaFile(const string fasta){
 
-void processFastaFile(){
+  ifstream myFlux(fasta);
+
+  string line;
+  
   if(myFlux) {
-    string line;
     while(getline(myFlux, line)) {
          cout << line << endl;
     }
   }
   else {
-      cout << "ERREUR: Impossible d'ouvrir le fichier en lecture." << endl;
+      cout << "ERROR: Impossible to open the file." << endl;
   }
 }
 
-int main() {
-  processFastaFile();
+int main(int argc, char* argv[]) {
+
+  string fasta;
   
-  return 0;  
+  // Scans the command line
+  for (int i = 1; i < argc; i++) {
+    if ((strcmp(argv[i], "-fasta") == 0) && (i < argc-1))
+	fasta = string(argv[++i]);
+  }
+  
+  processFastaFile(fasta);
+  
+  return 0;
 }
-
-
-
