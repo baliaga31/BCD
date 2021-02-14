@@ -1,22 +1,23 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "fasta.h"
 
 using namespace std;
 
 void processFastaFile(const string fasta){
 
-  ifstream myFlux(fasta);
+  ifstream fastaFile(fasta);
 
   string line;
   
-  if(myFlux) {
-    while(getline(myFlux, line)) {
-         cout << line << endl;
+  if(fastaFile) {
+    while(getline(fastaFile, line)) {
+      std::cout << line << endl;
     }
   }
   else {
-      cout << "ERROR: Impossible to open the file." << endl;
+    std::cout << "ERROR: can't open the file." << endl;
   }
 }
 
@@ -26,7 +27,7 @@ int main(int argc, char* argv[]) {
   
   // Scans the command line
   for (int i = 1; i < argc; i++) {
-    if ((strcmp(argv[i], "-fasta") == 0) && (i < argc-1))
+    if ((strcmp(argv[i], "-fasta") == 0) && (i < argc-1)) // Compare the first argument with "fasta", if it returns true, it will be compared with (i < arc-1)
 	fasta = string(argv[++i]);
   }
   
